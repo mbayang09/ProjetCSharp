@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="AppSenAgriculture/AppSenAgriculture.csproj" Id="88a64c9b-6be7-47da-a774-c999186cadd7" />
+  <Project Path="SetupSenAgriculture/SetupSenAgriculture.vdproj" Type="Installer">
+    <Build />
+  </Project>
+</Solution>
