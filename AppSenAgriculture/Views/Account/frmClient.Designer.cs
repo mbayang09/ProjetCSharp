@@ -70,6 +70,7 @@
             this.dgClient.RowHeadersWidth = 92;
             this.dgClient.Size = new System.Drawing.Size(395, 504);
             this.dgClient.TabIndex = 35;
+            this.dgClient.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgClient_CellContentClick);
             // 
             // btnSelectionner
             // 
@@ -88,6 +89,7 @@
             this.btnModifier.TabIndex = 33;
             this.btnModifier.Text = "&Modifier";
             this.btnModifier.UseVisualStyleBackColor = true;
+            this.btnModifier.Click += new System.EventHandler(this.btnModifier_Click);
             // 
             // btnSupprimer
             // 
@@ -98,6 +100,7 @@
             this.btnSupprimer.Tag = "";
             this.btnSupprimer.Text = "&Supprimer";
             this.btnSupprimer.UseVisualStyleBackColor = true;
+            this.btnSupprimer.Click += new System.EventHandler(this.btnSupprimer_Click);
             // 
             // btnAjouter
             // 
@@ -213,6 +216,7 @@
             this.btnBloquer.TabIndex = 38;
             this.btnBloquer.Text = "&Bloquer";
             this.btnBloquer.UseVisualStyleBackColor = true;
+            this.btnBloquer.Click += new System.EventHandler(this.btnBloquer_Click);
             // 
             // btnDebloquer
             // 
@@ -222,6 +226,7 @@
             this.btnDebloquer.TabIndex = 39;
             this.btnDebloquer.Text = "&Debloquer";
             this.btnDebloquer.UseVisualStyleBackColor = true;
+            this.btnDebloquer.Click += new System.EventHandler(this.btnDebloquer_Click);
             // 
             // btnReInitialise
             // 
@@ -231,6 +236,7 @@
             this.btnReInitialise.TabIndex = 40;
             this.btnReInitialise.Text = "&ReInitialiser";
             this.btnReInitialise.UseVisualStyleBackColor = true;
+            this.btnReInitialise.Click += new System.EventHandler(this.btnReInitialise_Click);
             // 
             // btnImprimer
             // 
