@@ -26,7 +26,7 @@ namespace AppSenAgriculture.Models
         public string MotDePasseUtilisateur { get; set; }
 
 
+		public bool EstBloque { get; set; } = false;
 
-
-    }
+	}
 }

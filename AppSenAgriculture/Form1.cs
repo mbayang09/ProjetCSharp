@@ -26,61 +26,67 @@ namespace AppSenAgriculture
             Application.Exit();
         }
 
-        private void btnSeConnecter_Click(object sender, EventArgs e)
-        {
+		private void btnSeConnecter_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				BdSenAgricultureContext db = new BdSenAgricultureContext();
 
-            try
-            {
-                BdSenAgricultureContext db = new BdSenAgricultureContext();
+				var leUser = db.utilisateurs
+					.Where(u => u.IdentifiantUtilisateur.ToLower() == txtIdentifiant.Text.ToLower())
+					.FirstOrDefault();
 
-                var leUser = db.utilisateurs
-                    .Where(u => u.IdentifiantUtilisateur.ToLower() == txtIdentifiant.Text.ToLower())
-                    .FirstOrDefault();
+				if (leUser != null)
+				{
+					// ===== NOUVEAU : Vérifier si le compte est bloqué =====
+					if (leUser.EstBloque)
+					{
+						MessageBox.Show(
+							"Votre compte est bloqué. Veuillez contacter l'administrateur.",
+							"Compte bloqué",
+							MessageBoxButtons.OK,
+							MessageBoxIcon.Warning
+						);
+						return;
+					}
 
-                if (leUser != null)
-                {
-                    using (MD5 md5Hash = MD5.Create())
-                    {
-                        if (Crypto.VerifyMd5Hash(md5Hash, txtMotDePasse.Text, leUser.MotDePasseUtilisateur))
-                        {
-                            frmMDI f = new frmMDI();
+					using (MD5 md5Hash = MD5.Create())
+					{
+						if (Crypto.VerifyMd5Hash(md5Hash, txtMotDePasse.Text, leUser.MotDePasseUtilisateur))
+						{
+							frmMDI f = new frmMDI();
 
-                            if (db.admins.Where(a => a.ID == leUser.ID).FirstOrDefault() != null)
-                            {
+							if (db.admins.Where(a => a.ID == leUser.ID).FirstOrDefault() != null)
+							{
+								f.profil = "Admin";
+							}
+							else if (db.clients.Where(a => a.ID == leUser.ID).FirstOrDefault() != null)
+							{
+								f.profil = "Client";
+							}
 
-                                f.profil = "Admin";
-                            }
-                            else if (db.clients.Where(a => a.ID == leUser.ID).FirstOrDefault() != null)
-                            {
-
-                                f.profil = "Client";
-                            }
-
-
-                            f.Show();
-                            this.Hide();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Mot de passe ou Identifiant  incorrect");
-                        }
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Mot de passe ou Identifiant introuvable");
-                }
-
-            }
-            catch (Exception ex)
-            {
-                Utils.WriteLogSystem(ex.Message, "erreur de connexion");
-                MessageBox.Show("Une erreur est survenue lors de la connexion. Veuillez réessayer plus tard.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+							f.Show();
+							this.Hide();
+						}
+						else
+						{
+							MessageBox.Show("Mot de passe ou Identifiant incorrect");
+						}
+					}
+				}
+				else
+				{
+					MessageBox.Show("Mot de passe ou Identifiant introuvable");
+				}
+			}
+			catch (Exception ex)
+			{
+				Utils.GererErreur("Connexion", ex);
+			}
+		}
 
 
-        private void frmConnexion_Load(object sender, EventArgs e) {
+		private void frmConnexion_Load(object sender, EventArgs e) {
 
             Utils.WriteFileError("test des erreurs ");
         }
