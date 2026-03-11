@@ -10,6 +10,8 @@ namespace AppSenAgriculture.Models
     public class Client:Utilisateur
     {
         public string ProfessionClient {  get; set; }
+        //ajoute unechamps si le client est bloqué ou pas
+        public bool EstBloque { get; set; }
     }
 
 
@@ -27,5 +29,7 @@ namespace AppSenAgriculture.Models
         public string EmailUtilisateur { get; set; }
       
         public string TelUtilisateur { get; set; }
+
+       
     }
 }

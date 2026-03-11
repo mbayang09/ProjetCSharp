@@ -154,6 +154,10 @@
     <Compile Include="Migrations\202603091453089_UpdateBdSenAgriculture.Designer.cs">
       <DependentUpon>202603091453089_UpdateBdSenAgriculture.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202603111218195_AjoutEstBloqueClient.cs" />
+    <Compile Include="Migrations\202603111218195_AjoutEstBloqueClient.Designer.cs">
+      <DependentUpon>202603111218195_AjoutEstBloqueClient.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\BdSenAgricultureContext.cs" />
@@ -212,6 +216,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202603091453089_UpdateBdSenAgriculture.resx">
       <DependentUpon>202603091453089_UpdateBdSenAgriculture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202603111218195_AjoutEstBloqueClient.resx">
+      <DependentUpon>202603111218195_AjoutEstBloqueClient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
